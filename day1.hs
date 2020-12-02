@@ -1,7 +1,7 @@
 import Data.List.Utils
 
 readNumList :: String -> [Int]
-readNumList = read . ("[" ++) . (++ "]") . replace ",," "," . replace "\r" "," . replace "\n" ","
+readNumList = read . ("[" ++) . (++ "]") . reverse . drop 1 . reverse . replace ",," "," . replace "\r" "," . replace "\n" ","
 
 day1Main :: [Int] -> Int
 day1Main (h:r)
@@ -10,4 +10,4 @@ day1Main (h:r)
 
 main = do
   fText <- readFile "day1.txt"
-  print $ day1Main $ read fText
+  print $ day1Main $ readNumList fText
